@@ -1,0 +1,37 @@
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { CanteenProvider } from "./context/CanteenContext";
+import Navbar from "./components/layout/Navbar";
+// Student pages
+import HomePage             from "./pages/student/HomePage";
+import MenuPage             from "./pages/student/MenuPage";
+import CartPage             from "./pages/student/CartPage";
+import PickupSlotPage       from "./pages/student/PickupSlotPage";
+import OrderConfirmationPage from "./pages/student/OrderConfirmationPage";
+import OrderTrackingPage    from "./pages/student/OrderTrackingPage";
+import GroupOrderPage       from "./pages/student/GroupOrderPage";
+// Staff pages
+import KitchenDashboard from "./pages/kitchen/KitchenDashboard";
+import ManagerDashboard from "./pages/manager/ManagerDashboard";
+export default function App() {
+  return (
+    <CanteenProvider>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          {/* ── Student ── */}
+          <Route path="/"                    element={<HomePage />}             />
+          <Route path="/menu"                element={<MenuPage />}             />
+          <Route path="/cart"                element={<CartPage />}             />
+          <Route path="/pickup-slot"         element={<PickupSlotPage />}       />
+          <Route path="/order-confirmation"  element={<OrderConfirmationPage />}/>
+          <Route path="/track"               element={<OrderTrackingPage />}    />
+          <Route path="/group-order"         element={<GroupOrderPage />}       />
+          {/* ── Staff ── */}
+          <Route path="/kitchen"  element={<KitchenDashboard />} />
+          <Route path="/manager"  element={<ManagerDashboard />} />
+        </Routes>
+      </BrowserRouter>
+    </CanteenProvider>
+  );
+}
